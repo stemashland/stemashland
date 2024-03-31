@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashland STEM Club</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://yetiacademy.com/wp-content/uploads/2023/03/elementary-school-stem.jpg'); /* Placeholder image URL */
+      background-size: cover;
+      background-position: center;
+      color: #333;
+    }
+    header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      width: 100px; /* Adjust the size as needed */
+      height: auto;
+    }
+    h1 {
+      margin: 0;
+      font-size: 48px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      border-radius: 10px;
+    }
+    .info-section {
+      margin-top: 30px;
+    }
+    h2, h3 {
+      color: #007bff;
+    }
+    p {
+      line-height: 1.6;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .tab {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+    }
+    .tab:hover {
+      background-color: #0056b3;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 5px 5px;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://mail.google.com/mail/u/2?ui=2&ik=459bd817b0&attid=0.2&permmsgid=msg-f:1793742148353925815&th=18e4a6faf34822b7&view=att&disp=safe&realattid=f_ltuycb721" alt="Ashland STEM Club Logo" class="logo">
+    <h1>Ashland STEM Club</h1>
+  </header>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab" onclick="openTab('about')">About Us</div>
+      <div class="tab" onclick="openTab('registration')">Registration</div>
+      <div class="tab" onclick="openTab('faq')">FAQ</div>
+    </div>
+    <div id="about" class="tab-content active">
+      <h2>Welcome to Ashland STEM Club</h2>
+      <p>
+        Ashland STEM is a locally run club held on Saturdays at 11:00am during the summer, from July through August, at the local library in the recreation room. Parents are welcome to stay.
+      </p>
+      <p>
+        Contact us: <a href="mailto:crocodiledilly3000@gmail.com">crocodiledilly3000@gmail.com</a><br>
+        Mission Statement: Our STEM club aims to provide an engaging and educational experience for kids (K-5) interested in science, technology, engineering, and mathematics. We offer hands-on activities, experiments, and projects that spark curiosity and foster a love for STEM subjects.
+      </p>
+      <p>
+        Location: Local library, recreation room
+      </p>
+    </div>
+    <div id="registration" class="tab-content">
+      <h2>Registration</h2>
+      <p>
+        If you're interested in joining Ashland STEM Club, please fill out the registration form below and we'll get in touch with you with more information.
+      </p>
+      <form action="https://formspree.io/f/xdoqlkzv" method="POST">
+        <label>
+          Your email:
+          <input type="email" name="email">
+        </label>
+        <label>
+          Your child's name:
+          <input type="text" name="child_name">
+        </label>
+        <label>
+          Preferred Phone Number:
+          <input type="text" name="phone">
+        </label>
+        <!-- other form fields if any -->
+        <button type="submit">Send</button>
+      </form>
+      <p>Cost and billing information: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, nunc vel lacinia aliquet, felis elit tincidunt massa, vitae hendrerit neque elit et dolor.</p>
+    </div>
+    <div id="faq" class="tab-content">
+      <h2>FAQ</h2>
+      <p><strong>Q: What are the club hours?</strong><br>A: The club is held on Saturdays from 11:00am to 1:00pm during the summer.</p>
+      <p><strong>Q: Is there an age limit for joining?</strong><br>A: The club is for kids in grades K-5.</p>
+      <p><strong>Q: Can parents stay during the sessions?</strong><br>A: Yes, parents are welcome to stay.</p>
+      <p><strong>Q: How can I contact the club?</strong><br>A: You can contact us at <a href="mailto:crocodiledilly3000@gmail.com">crocodiledilly3000@gmail.com</a>.</p>
+    </div>
+  </div>
+  <script>
+    function openTab(tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      document.getElementById(tabName).style.display = "block";
+    }
+    document.getElementById("about").style.display = "block"; // Show the first tab by default
+  </script>
+</body>
+</html>
