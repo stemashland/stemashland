@@ -1,345 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashland STEM Club</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-image: url('https://yetiacademy.com/wp-content/uploads/2023/03/elementary-school-stem.jpg'); /* Placeholder image URL */
-      background-size: cover;
-      background-position: center;
-      color: #333;
-    }
-    header {
-      background-color: #007bff;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-    .logo {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      width: 100px; /* Adjust the size as needed */
-      height: auto;
-    }
-    h1 {
-      margin: 0;
-      font-size: 48px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-      border-radius: 10px;
-    }
-    .info-section {
-      margin-top: 30px;
-    }
-    h2, h3 {
-      color: #007bff;
-    }
-    p {
-      line-height: 1.6;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    input[type="submit"] {
-      background-color: #007bff;
-      color: #fff;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-    .tab {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 5px 5px 0 0;
-    }
-    .tab:hover {
-      background-color: #0056b3;
-    }
-    .tab-content {
-      display: none;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 0 0 5px 5px;
-    }
-    .active {
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashland STEM Club - Ignite Curiosity, Explore Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A90E2; /* A vibrant blue */
+            --secondary-color: #50E3C2; /* A bright teal */
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --background-light: #F4F7F6;
+            --background-dark: #E0E4E3;
+            --white: #FFFFFF;
+        }
+
+       html, body {
+    height: 100%; /* Make html and body take up full viewport height */
+    margin: 0; /* Ensure no default margins on body */
+    padding: 0; /* Ensure no default padding on body */
+	overflow-y: scroll; /* <- move this here */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* margin: 0; REMOVE THIS - it's already handled by html, body rule above */
+    /* padding: 0; REMOVE THIS */
+    background-color: var(--background-light);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+
+    /* --- ADD THESE LINES FOR STICKY FOOTER WITH FLEXBOX --- */
+    display: flex; /* Enable flexbox layout for direct children */
+    flex-direction: column; /* Arrange children in a vertical column */
+}
+
+/* Header styles (no change here for sticky footer) */
+header {
+    background-color: var(--primary-color); /* Solid blue */
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adjust header padding for logo space */
+    padding-right: 180px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Logo styles (no change here for sticky footer) */
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    max-width: 150px;
+    height: auto;
+    z-index: 10;
+}
+
+/* H1 and P styles (no change here for sticky footer) */
+h1 {
+    margin: 0;
+    font-size: 3.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center; /* Keep centered */
+}
+
+header p {
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-align: center; /* Keep centered */
+}
+
+/* Nav styles (no change here for sticky footer) */
+nav {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Your existing nav ul, li, a styles */
+
+/* Container styles */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-out;
+
+    /* --- ADD THIS LINE FOR STICKY FOOTER --- */
+    flex-grow: 1; /* This makes the container take up available vertical space */
+}
+
+/* Your existing section-content, h2, h3, p, a, form styles etc. */
+
+/* Footer styles (no change here for sticky footer) */
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px; /* This margin will now be added *before* the footer takes its flex-position */
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 0.9em;
+}
+
+		/* HEADER */
+		header {
+			background-color: var(--primary-color);
+			color: var(--white);
+			padding: 40px 20px 30px 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			text-align: center;
+		}
+
+		.logo {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			max-width: 150px;
+			height: auto;
+			z-index: 10;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 3.5em;
+			font-weight: 700;
+			letter-spacing: 1px;
+		}
+
+		.subtitle {
+			font-size: 1.2em;
+			color: var(--white);
+			font-weight: 400;
+			margin-top: 10px;
+			margin-bottom: 15px;
+		}
+
+		/* FOOTER */
+		footer {
+			text-align: center;
+			padding: 25px;
+			margin-top: 40px;
+			background-color: var(--primary-color);
+			color: var(--white);
+			font-size: 0.9em;
+		}
+
+footer p {
+    margin: 0;
+}
+        }
+
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active-tab {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-content {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--light-text-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: var(--background-dark);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        form button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        form button:hover {
+            background-color: #41c7a9;
+            transform: translateY(-2px);
+        }
+
+        /* Digital Library Specifics */
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .experiment-card {
+            background-color: var(--background-dark);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .experiment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .experiment-card img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .experiment-card h4 {
+            color: var(--primary-color);
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .experiment-card p {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-bottom: 15px;
+        }
+
+        .experiment-card .view-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .experiment-card .view-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Calendar Specifics */
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar-nav button:hover {
+            background-color: #0056b3;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .calendar-day, .calendar-weekday {
+            padding: 15px 5px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .calendar-weekday {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 0.9em;
+        }
+
+        .calendar-day {
+            background-color: var(--background-dark);
+            cursor: default;
+            color: var(--text-color);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            min-height: 50px; /* Ensure consistent height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-day.current-month {
+            background-color: var(--white);
+            border: 1px solid var(--background-dark);
+        }
+
+        .calendar-day.has-event {
+            cursor: pointer;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .calendar-day.has-event:hover {
+            background-color: #41c7a9;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .calendar-day.empty {
+            background-color: var(--background-light);
+            cursor: default;
+            border: 1px dashed #e0e0e0;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-button {
+            color: var(--light-text-color);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            color: var(--light-text-color);
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+            color: var(--white); /* Ensure footer text is white */
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Ashland STEM Club</h1>
-  </header>
-  <div class="container">
-    <div class="tabs">
-      <div class="tab" onclick="openTab('about')">About Us</div>
-      <div class="tab" onclick="openTab('registration')">Registration</div>
-      <div class="tab" onclick="openTab('faq')">FAQ</div>
-    </div>
-    <div id="about" class="tab-content active">
-      <h2>Welcome to Ashland STEM Club</h2>
-      <p>
-        Ashland STEM is a locally run club held on Saturdays at 11:00am during the summer, from July through August, at the local library in the recreation room. Parents are welcome to stay.
-      </p>
-      <p>
-        Contact us: <a href="mailto:stemashland@gmail.com">stemashland@gmail.com</a><br>
-        Mission Statement: Our STEM club aims to provide an engaging and educational experience for kids (K-5) interested in science, technology, engineering, and mathematics. We offer hands-on activities, experiments, and projects that spark curiosity and foster a love for STEM subjects.
-      </p>
-      <p>
-        Location: Local library, recreation room
-      </p>
-    </div>
-    <div id="registration" class="tab-content">
-      <h2>Registration</h2>
-      <p>
-        If you're interested in joining Ashland STEM Club, please fill out the registration form below and we'll get in touch with you with more information.
-      </p>
-   <form
-  action="https://formspree.io/f/xayrzpez"
-  method="POST"
->
-  <form id="fs-frm" name="registration-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}" method="post">
-  <fieldset id="fs-frm-inputs">
-    <label for="full-name">Full Name</label>
-    <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
-    
-    <label for="child-name">My Child's Name and Age</label>
-    <div style="display: flex; gap: 10px;">
-      <input type="text" name="child-name" id="child-name" placeholder="Child's First and Last" required="" style="flex: 2;">
-      <select name="child-age" id="child-age" required="" style="flex: 1;">
-        <option value="" selected="" disabled="">Select Age</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-      </select>
-    </div>
-    
-    <label for="email-address">Email Address</label>
-    <input type="email" name="_replyto" id="email-address" placeholder="email@domain.tld" required="">
-    
-    <label for="street-address">Street Address</label>
-    <input type="text" name="street" id="street-address" placeholder="Street" required="">
-    
-    <fieldset class="locale">
-      <legend>Locale</legend>
-      <input type="text" name="city" placeholder="City" required="">
-      <select name="state" required="">
-        <option value="" selected="" disabled="">State</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-        <option value="CO">Colorado</option>
-        <option value="CT">Connecticut</option>
-        <option value="DE">Delaware</option>
-        <option value="DC">District Of Columbia</option>
-        <option value="FL">Florida</option>
-        <option value="GA">Georgia</option>
-        <option value="HI">Hawaii</option>
-        <option value="ID">Idaho</option>
-        <option value="IL">Illinois</option>
-        <option value="IN">Indiana</option>
-        <option value="IA">Iowa</option>
-        <option value="KS">Kansas</option>
-        <option value="KY">Kentucky</option>
-        <option value="LA">Louisiana</option>
-        <option value="ME">Maine</option>
-        <option value="MD">Maryland</option>
-        <option value="MA">Massachusetts</option>
-        <option value="MI">Michigan</option>
-        <option value="MN">Minnesota</option>
-        <option value="MS">Mississippi</option>
-        <option value="MO">Missouri</option>
-        <option value="MT">Montana</option>
-        <option value="NE">Nebraska</option>
-        <option value="NV">Nevada</option>
-        <option value="NH">New Hampshire</option>
-        <option value="NJ">New Jersey</option>
-        <option value="NM">New Mexico</option>
-        <option value="NY">New York</option>
-        <option value="NC">North Carolina</option>
-        <option value="ND">North Dakota</option>
-        <option value="OH">Ohio</option>
-        <option value="OK">Oklahoma</option>
-        <option value="OR">Oregon</option>
-        <option value="PA">Pennsylvania</option>
-        <option value="RI">Rhode Island</option>
-        <option value="SC">South Carolina</option>
-        <option value="SD">South Dakota</option>
-        <option value="TN">Tennessee</option>
-        <option value="TX">Texas</option>
-        <option value="UT">Utah</option>
-        <option value="VT">Vermont</option>
-        <option value="VA">Virginia</option>
-        <option value="WA">Washington</option>
-        <option value="WV">West Virginia</option>
-        <option value="WI">Wisconsin</option>
-        <option value="WY">Wyoming</option>
-      </select>
-      <input type="text" name="postal-code" placeholder="12345" required="">
-    </fieldset>
-    
-    <label for="note">Note</label>
-    <textarea rows="2" name="note" id="note" placeholder="Include any additional information"></textarea>
-    <input type="hidden" name="_subject" id="email-subject" value="Registration Form Submission">
-  </fieldset>
-  <input type="submit" value="Register">
-</form>
+    <header>
+        <img src="https://i.ibb.co/FqbMMCS9/Untitled-design-6.png" class="logo" alt="Ashland STEM Club Logo">
+        <h1>Ashland STEM Club</h1>
+        <p class="subtitle">Igniting Curiosity, Exploring Innovation</p>
+    </header>
 
-     <style>/* reset */
-#fs-frm input,
-#fs-frm select,
-#fs-frm textarea,
-#fs-frm fieldset,
-#fs-frm optgroup,
-#fs-frm label,
-#fs-frm #card-element:disabled {
-  font-family: inherit;
-  font-size: 100%;
-  color: inherit;
-  border: none;
-  border-radius: 0;
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-#fs-frm label,
-#fs-frm legend,
-#fs-frm ::placeholder {
-  font-size: .825rem;
-  margin-bottom: .5rem;
-  padding-top: .2rem;
-  display: flex;
-  align-items: baseline;
-}
+    <nav>
+        <ul> 
+            <li><a href="#about" class="tab-link active-tab" data-tab="about">About Us</a></li>
+            <li><a href="#programs" class="tab-link" data-tab="programs">Our Programs</a></li>
+            <li><a href="#registration" class="tab-link" data-tab="registration">Join Us!</a></li>
+            <li><a href="#library" class="tab-link" data-tab="library">Digital Library</a></li>
+            <li><a href="#contact" class="tab-link" data-tab="contact">Contact & FAQ</a></li>
+        </ul>
+    </nav>
 
-/* border, padding, margin, width */
-#fs-frm input,
-#fs-frm select,
-#fs-frm textarea,
-#fs-frm #card-element {
-  border: 1px solid rgba(0,0,0,0.2);
-  background-color: rgba(255,255,255,0.9);
-  padding: .75em 1rem;
-  margin-bottom: 1.5rem;
-}
-#fs-frm input:focus,
-#fs-frm select:focus,
-#fs-frm textarea:focus {
-  background-color: white;
-  outline-style: solid;
-  outline-width: thin;
-  outline-color: gray;
-  outline-offset: -1px;
-}
-#fs-frm [type="text"],
-#fs-frm [type="email"] {
-  width: 100%;
-}
-#fs-frm [type="button"],
-#fs-frm [type="submit"],
-#fs-frm [type="reset"] {
-  width: auto;
-  cursor: pointer;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
-}
-#fs-frm [type="button"]:focus,
-#fs-frm [type="submit"]:focus,
-#fs-frm [type="reset"]:focus {
-  outline: none;
-}
-#fs-frm [type="submit"],
-#fs-frm [type="reset"] {
-  margin-bottom: 0;
-}
-#fs-frm select {
-  text-transform: none;
-}
+    <div class="container">
+        <div id="about" class="section-content active">
+            <h2>Welcome to Ashland STEM Club!</h2>
+            <p>
+                Ashland STEM Club is dedicated to fostering a love for **Science, Technology, Engineering, and Mathematics** in young minds. We believe in learning by doing, offering engaging hands-on activities, exciting experiments, and collaborative projects that spark curiosity and build essential skills. Our mission is to empower the next generation of innovators right here in Ashland!
+            </p>
+            <p>
+                We are a locally run club, passionately committed to providing an inclusive and educational experience for children in grades **K-5**. Join us for an unforgettable journey of discovery!
+            </p>
+            <h3>Our Vision:</h3>
+            <ul>
+                <li>To make STEM accessible and exciting for all elementary-aged children.</li>
+                <li>To cultivate critical thinking, problem-solving, and creativity.</li>
+                <li>To build a supportive community where kids can explore, experiment, and grow.</li>
+                <li>To inspire future scientists, engineers, and tech leaders.</li>
+            </ul>
+        </div>
 
-#fs-frm [type="checkbox"] {
-  -webkit-appearance: checkbox;
-  -moz-appearance: checkbox;
-  appearance: checkbox;
-  display: inline-block;
-  width: auto;
-  margin: 0 .5em 0 0 !important;
-}
+        <div id="programs" class="section-content">
+            <h2>Our Summer 2025 Programs</h2>
+            <p>Get ready for an incredible Summer of STEM with Ashland STEM Club! We have an exciting lineup of themes and activities planned for Summer 2025, designed to engage and challenge every young explorer.</p>
 
-#fs-frm [type="radio"] {
-  -webkit-appearance: radio;
-  -moz-appearance: radio;
-  appearance: radio;
-}
+            <h3>Summer 2025 Schedule:</h3>
+            <p>
+                Our club sessions will run every **Saturday from July 5th through August 30th, 2025**, from **11:00 AM to 1:00 PM**.
+            </p>
+            <p>
+                **Location:** The main recreation room at the Ashland Public Library.
+            </p>
 
-/* address, locale */
-#fs-frm fieldset.locale input[name="city"],
-#fs-frm fieldset.locale select[name="state"],
-#fs-frm fieldset.locale input[name="postal-code"] {
-  display: inline;
-}
-#fs-frm fieldset.locale input[name="city"] {
-  width: 52%;
-}
-#fs-frm fieldset.locale select[name="state"],
-#fs-frm fieldset.locale input[name="postal-code"] {
-  width: 20%;
-}
-#fs-frm fieldset.locale input[name="city"],
-#fs-frm fieldset.locale select[name="state"] {
-  margin-right: 3%;
-}
-</style>
+            <h3>Interactive Program Calendar:</h3>
+            <div class="calendar-nav">
+                <button id="prevMonth">Previous Month</button>
+                <h3 id="currentMonthYear"></h3>
+                <button id="nextMonth">Next Month</button>
+            </div>
+            <div id="calendar" class="calendar-grid">
+                </div>
+            <p style="margin-top: 20px; font-size: 0.9em; text-align: center;">Click on a highlighted Saturday to see the experiment for that day!</p>
+
+            <div id="programModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <img id="modalImage" src="" alt="Experiment Image">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDate"></p>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="registration" class="section-content">
+            <h2>Join Our Club for Summer 2025!</h2>
+            <p>
+                Spaces for Ashland STEM Club Summer 2025 are limited, so we encourage early registration! To register your child, please fill out the form below. Once we receive your submission, we will send you a confirmation email with detailed information regarding enrollment, payment, and a comprehensive welcome packet.
+            </p>
+
+            <h3>Registration Form</h3>
+            <form action="https://formspree.io/f/xdoqlkzv" method="POST">
+                <label for="parent-email">Parent/Guardian Email:</label>
+                <input type="email" id="parent-email" name="parent_email" placeholder="your.email@example.com" required>
+
+                <label for="child-name">Child's Full Name:</label>
+                <input type="text" id="child-name" name="child_name" placeholder="First Last" required>
+
+                <label for="child-grade">Child's Grade (as of Fall 2025):</label>
+                <input type="text" id="child-grade" name="child_grade" placeholder="e.g., K, 1st, 2nd" required>
+
+                <label for="phone">Preferred Phone Number:</label>
+                <input type="text" id="phone" name="phone" placeholder="(123) 456-7890" required>
+
+                <label for="comments">Any special notes or interests for your child?</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="e.g., allergies, specific STEM interests"></textarea>
+
+                <button type="submit">Submit Registration Interest</button>
+            </form>
+
+            <h3>Cost and Billing Information:</h3>
+            <p>
+                The fee for the Summer 2025 Ashland STEM Club program (9 sessions) is **$180 per child**. This includes all materials, supplies, and a club t-shirt.
+            </p>
+            <p>
+                **Payment Schedule:** A non-refundable deposit of $50 is due upon registration to secure your child's spot. The remaining balance of $130 will be due by June 15th, 2025. Payment instructions will be provided in your confirmation email.
+            </p>
+            <p>
+                We offer a 10% sibling discount. Please contact us directly for more details.
+            </p>
+        </div>
+
+        <div id="library" class="section-content">
+            <h2>Digital STEM Library</h2>
+            <p>
+                Welcome to our Digital STEM Library! This is where we showcase some of the exciting experiments and projects we've completed in past sessions. It's a great way to revisit the fun, inspire new ideas, and see the amazing work our club members have done!
+            </p>
+            <p>
+                Each entry includes a brief description, photos or videos (where available), and sometimes even instructions so you can try them at home!
+            </p>
+
+            <div class="experiment-grid">
+                <div class="experiment-card">
+                    <img src="https://i.ibb.co/KpD78xDK/IMG-7484.jpg" alt="Lava Lamp Experiment">
+                    <h4>Lava Lamps🧪</h4>
+                    <p>A classic science experiment demonstrating chemical reactions with baking soda and vinegar.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Erupting Volcanoes coming soon!');">View Details</a>
+                </div>
+
+                <div class="experiment-card">
+                    <img src="https://i.ibb.co/y4L272r/straw-bridge.jpg" alt="Strawberry DNA Extraction🧬">
+                    <h4>Strawberry DNA Extraction🧬</h4>
+                    <p>Designing and building a bridge using only straws and tape, focusing on engineering principles.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Straw Bridge Challenge coming soon!');">View Details</a>
+                </div>
+
+                <div class="experiment-card">
+                    <img src="https://i.ibb.co/s3p1f71/circuit-board.jpg" alt="Simple Circuits">
+                    <h4>🔦 Laser Maze with Mirrors and Cardboard</h4>
+                    <p>Exploring basic electricity by creating simple circuits to light up LED bulbs.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Light Up Circuits coming soon!');">View Details</a>
+                </div>
+
+                <div class="experiment-card">
+                    <img src="https://i.ibb.co/Y2B7m8W/slime.jpg" alt="Slime Making">
+                    <h4>⚡Electric Circuits (Two Batteries + Light)</h4>
+                    <p>Understanding polymers and states of matter through the fun of making different types of slime.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Slime Science coming soon!');">View Details</a>
+                </div>
+
+                <div class="experiment-card">
+                    <img src="https://i.ibb.co/k2D7B2D/robot.jpg" alt="Robot">
+                    <h4>🥚 Egg Drop</h4>
+                    <p>Building and programming simple robots to perform basic tasks, introducing concepts of automation.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Intro to Robotics coming soon!');">View Details</a>
+                </div>
+
+                <div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>🌋 Volcano</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				<div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>🏠 Gingerbread Houses</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				<div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>Plant Life Cycle</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				<div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>Plant Life Cycle</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				<div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>Plant Life Cycle</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				<div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>Plant Life Cycle</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				<div class="experiment-card">
+                    <img src="https://i.ibb.co/f2PZq2b/planting.jpg" alt="Planting Seeds">
+                    <h4>Plant Life Cycle</h4>
+                    <p>Learning about botany and growth by planting seeds and observing their development.</p>
+                    <a href="#" class="view-button" onclick="alert('Details for Plant Life Cycle coming soon!');">View Details</a>
+                </div>
+				
+				
+            </div>
+            <p style="margin-top: 30px; text-align: center;">*More experiments and project details will be added soon!*</p>
+        </div>
+
+        <div id="contact" class="section-content">
+            <h2>Contact Us & Frequently Asked Questions</h2>
+
+            <h3>Got Questions? We're Here to Help!</h3>
+            <p>
+                The best way to reach us is via email. We strive to respond to all inquiries within 24-48 hours.
+            </p>
+            <p>
+                **Email:** <a href="mailto:info@ashlandstemclub.org">info@ashlandstemclub.org</a> (New dedicated email!)<br>
+                *(For urgent matters, please indicate "URGENT" in the subject line.)*
+            </p>
+            <p>
+                **Location:** Ashland Public Library, Recreation Room (during club hours)<br>
+                123 Main Street, Ashland, MA 01721
+            </p>
+
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <div class="faq-section">
+                <h4>Q: What are the club hours for Summer 2025?</h4>
+                <p>A: The club will run every Saturday from July 5th to August 30th, 2025, from 11:00 AM to 1:00 PM.</p>
+
+                <h4>Q: Is there an age or grade limit for joining?</h4>
+                <p>A: Yes, Ashland STEM Club is designed for children in grades K-5 (kindergarten through fifth grade).</p>
+
+                <h4>Q: Can parents stay during the sessions?</h4>
+                <p>A: Absolutely! Parents are always welcome to stay and observe, or even participate in the activities with their child. We encourage parent engagement!</p>
+
+                <h4>Q: What is the cost of the program, and what does it include?</h4>
+                <p>A: The full Summer 2025 program (9 sessions) costs $180 per child. This fee covers all experiment materials, supplies, and an exclusive Ashland STEM Club t-shirt.</p>
+
+                <h4>Q: How do I register my child?</h4>
+                <p>A: Please fill out the "Registration Form" on our <a href="#registration" onclick="document.querySelector('nav ul li a[data-tab=\'registration\']').click()">Join Us!</a> tab. We will then send you a confirmation email with payment details.</p>
+
+                <h4>Q: Do you offer sibling discounts?</h4>
+                <p>A: Yes, we offer a 10% discount for siblings enrolled in the same summer program. Please contact us after submitting your registration forms for details on how to apply the discount.</p>
+
+                <h4>Q: What should my child bring to the club?</h4>
+                <p>A: Just their enthusiasm and a curious mind! All materials for experiments will be provided. You may want to bring a water bottle.</p>
+            </div>
+        </div>
     </div>
-    <div id="faq" class="tab-content">
-      <h2>FAQ</h2>
-      <p><strong>Q: What are the club hours?</strong><br>A: The club is held on Saturdays from 11:00am to 1:00pm during the summer.</p>
-      <p><strong>Q: Is there an age limit for joining?</strong><br>A: The club is for kids in grades K-5.</p>
-      <p><strong>Q: Can parents stay during the sessions?</strong><br>A: Yes, parents are welcome to stay.</p>
-      <p><strong>Q: What type of activities will the club do?</strong><br>A: Members will participate in a new activity weekly, covering topics:<br>   Density<br>   Light<br>   Nature<br>   Electricity<br>   Chemistry<br>   Egg Drop</p>
-      <p><strong>Q: How can I contact the club?</strong><br>A: You can contact us at <a href="mailto:stemashland@gmail.com">stemashland@gmail.com</a>.</p>
-    </div>
-  </div>
-  <script>
-    function openTab(tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      document.getElementById(tabName).style.display = "block";
-    }
-    document.getElementById("about").style.display = "block"; // Show the first tab by default
-  </script>
+
+    <footer>
+        <p>&copy; 2025 Ashland STEM Club. All rights reserved. | <a href="mailto:info@ashlandstemclub.org">info@ashlandstemclub.org</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const sectionContents = document.querySelectorAll('.section-content');
+
+            function openTab(tabName) {
+                // Remove 'active-tab' from all tab links
+                tabLinks.forEach(link => {
+                    link.classList.remove('active-tab');
+                });
+
+                // Hide all section contents
+                sectionContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Add 'active-tab' to the clicked tab link
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active-tab');
+
+                // Show the corresponding section content
+                document.getElementById(tabName).classList.add('active');
+            }
+
+            // Add click event listeners to tab links
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    const tabName = this.getAttribute('data-tab');
+                    openTab(tabName);
+                });
+            });
+
+            // Set the default active tab (About Us) on page load
+            openTab('about');
+
+            // Handle URL hash for direct tab linking
+            if (window.location.hash) {
+                const initialTab = window.location.hash.substring(1);
+                if (document.getElementById(initialTab)) {
+                    openTab(initialTab);
+                }
+            }
+
+            // --- Calendar Functionality ---
+            const calendarEl = document.getElementById('calendar');
+            const currentMonthYearEl = document.getElementById('currentMonthYear');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+
+            const programModal = document.getElementById('programModal');
+            const closeButton = document.querySelector('.close-button');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDate = document.getElementById('modalDate');
+            const modalDescription = document.getElementById('modalDescription');
+
+            let currentMonth = 6; // July (0-indexed)
+            let currentYear = 2025;
+
+            const programDetails = {
+                // July 2025
+                '7-5-2025': {
+                    title: 'Rocket Launch Physics',
+                    description: 'Explore the principles of propulsion by building and launching mini-rockets! We\'ll learn about thrust, drag, and gravity as our rockets soar.',
+                    image: 'https://i.ibb.co/SwG69Wz/rocket.jpg' // Example image
+                },
+                '7-12-2025': {
+                    title: 'Crazy Contraptions & Chain Reactions',
+                    description: 'Design and build Rube Goldberg-esque machines! We\'ll explore kinetic and potential energy through a series of fun and unexpected actions.',
+                    image: 'https://i.ibb.co/g42vWfT/chain-reaction.jpg' // Example image
+                },
+                '7-19-2025': {
+                    title: 'Robotics Challenge: Maze Runner Bots',
+                    description: 'Get hands-on with basic robotics! Program small robots to navigate a challenging maze, learning about simple coding and algorithms.',
+                    image: 'https://i.ibb.co/k2D7B2D/robot.jpg' // Reusing existing image
+                },
+                '7-26-2025': {
+                    title: 'Edible Anatomy: Building the Human Body',
+                    description: 'Discover the amazing systems of the human body by building edible models of organs and structures. Science has never been so delicious!',
+                    image: 'https://i.ibb.co/L5w2N3x/edible-anatomy.jpg' // Example image
+                },
+                // August 2025
+                '8-2-2025': {
+                    title: 'Eco-Engineering: Water Filters & Wind Power',
+                    description: 'Become environmental engineers! We\'ll build simple water filters and design mini wind turbines to understand renewable energy and conservation.',
+                    image: 'https://i.ibb.co/hL4w2F1/eco-engineering.jpg' // Example image
+                },
+                '8-9-2025': {
+                    title: 'Crystal Creations & Chemical Reactions',
+                    description: 'Grow your own beautiful crystals and explore the wonders of chemistry. We\'ll mix solutions and observe stunning formations.',
+                    image: 'https://i.ibb.co/VDy1kFf/crystals.jpg' // Example image
+                },
+                '8-16-2025': {
+                    title: 'Bridge Building Basics: Strength in Structure',
+                    description: 'Put your engineering skills to the test by designing and constructing various types of bridges. We\'ll see which designs can hold the most weight!',
+                    image: 'https://i.ibb.co/y4L272r/straw-bridge.jpg' // Reusing existing image
+                },
+                '8-23-2025': {
+                    title: 'Slime, Oobleck & Non-Newtonian Fluids',
+                    description: 'Dive into the fascinating world of non-Newtonian fluids! Make slime and Oobleck and discover their unique properties.',
+                    image: 'https://i.ibb.co/Y2B7m8W/slime.jpg' // Reusing existing image
+                },
+                '8-30-2025': {
+                    title: 'Coding Adventures: Storytelling with Scratch',
+                    description: 'Begin your coding journey with Scratch! Create interactive stories and games, learning fundamental programming concepts in a fun way.',
+                    image: 'https://i.ibb.co/TY2X2Y9/scratch-coding.jpg' // Example image
+                }
+            };
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const weekdayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            function generateCalendar(month, year) {
+                calendarEl.innerHTML = ''; // Clear previous calendar
+                currentMonthYearEl.textContent = `${monthNames[month]} ${year}`;
+
+                // Add weekday headers
+                weekdayNames.forEach(day => {
+                    const weekdayHeader = document.createElement('div');
+                    weekdayHeader.classList.add('calendar-weekday');
+                    weekdayHeader.textContent = day;
+                    calendarEl.appendChild(weekdayHeader);
+                });
+
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startDay = firstDay.getDay(); // 0 for Sunday, 1 for Monday, etc.
+
+                // Add empty days for the beginning of the month
+                for (let i = 0; i < startDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.classList.add('calendar-day', 'empty');
+                    calendarEl.appendChild(emptyDay);
+                }
+
+                // Add days of the month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = new Date(year, month, day);
+                    const dayEl = document.createElement('div');
+                    dayEl.classList.add('calendar-day', 'current-month');
+                    dayEl.textContent = day;
+
+                    const dateString = `${month + 1}-${day}-${year}`;
+
+                    if (programDetails[dateString]) {
+                        dayEl.classList.add('has-event');
+                        dayEl.dataset.date = dateString; // Store the date string
+                    } else if (date.getDay() === 6 && (month === 6 || month === 7)) { // Highlight Saturdays in July/August that don't have an explicit program yet
+                        // This else if is primarily for visual cues if you want to indicate all Saturdays
+                        // For this prompt, we only highlight if there's an event.
+                    }
+
+                    calendarEl.appendChild(dayEl);
+                }
+            }
+
+            function openProgramModal(dateString) {
+                const program = programDetails[dateString];
+                if (program) {
+                    modalImage.src = program.image;
+                    modalTitle.textContent = program.title;
+                    modalDate.textContent = `Date: ${new Date(dateString).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
+                    modalDescription.textContent = program.description;
+                    programModal.style.display = 'flex'; // Use flex to center
+                }
+            }
+
+            function closeModal() {
+                programModal.style.display = 'none';
+            }
+
+            // Event listeners for calendar navigation
+            prevMonthBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+
+            nextMonthBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+
+            // Event delegation for clicking on calendar days
+            calendarEl.addEventListener('click', (event) => {
+                const clickedDay = event.target.closest('.calendar-day.has-event');
+                if (clickedDay) {
+                    openProgramModal(clickedDay.dataset.date);
+                }
+            });
+
+            // Close modal events
+            closeButton.addEventListener('click', closeModal);
+            window.addEventListener('click', (event) => {
+                if (event.target === programModal) {
+                    closeModal();
+                }
+            });
+
+            // Initial calendar generation
+            generateCalendar(currentMonth, currentYear);
+        });
+    </script>
 </body>
 </html>
